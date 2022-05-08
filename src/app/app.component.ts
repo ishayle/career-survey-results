@@ -65,7 +65,7 @@ export class AppComponent {
         series: a,
       });
     });
-    console.log(this.dynamicResults);
+    console.log(JSON.stringify(this.dynamicResults));
     // this.dynamicResults = [
     //   {
     //     name: 'reason1',
@@ -94,5 +94,44 @@ export class AppComponent {
     //     ],
     //   },
     // ];
+
+    this.dynamicResults = [
+      {
+        name: 'דעיכה בביקוש למקצוע',
+        series: [
+          {
+            name: 'נקבה',
+            value: 3,
+          },
+          {
+            name: 'זכר',
+            value: 5,
+          },
+        ],
+      },
+      {
+        name: 'מימוש פוטנציאל',
+        series: [
+          {
+            name: 'נקבה',
+            value: 47,
+          },
+          {
+            name: 'זכר',
+            value: 16,
+          },
+        ],
+      },
+      {
+        name: 'מניעים כלכליים',
+        series: [
+          {
+            name: 'נקבה',
+            value: 84,
+          },
+        
+        ],
+      },
+    ];
   }
 }
