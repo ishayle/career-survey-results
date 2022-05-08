@@ -7,8 +7,6 @@ import RawData = require('./rawData');
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Angular ' + VERSION.major;
-  public carrerResultArray: CareerResult[] = [];
   public dynamicResults = [];
   public dynamicResults2 = [];
   width: number = 1000;
@@ -25,7 +23,7 @@ export class AppComponent {
   yAxisLabel = 'Sales';
   timeline = true;
   doughnut = true;
-  selectedDevice: string = 'gender';
+  selectedDevice: string;
   colorScheme = {
     domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB'],
   };
@@ -33,21 +31,25 @@ export class AppComponent {
   showLabels = true;
   constructor(private surveyDataService: SurveyDataService) {}
   public ngOnInit(): void {
+    this.selectedDevice = 'age';
+  }
+
+  onSelectChange(option: Event) {
     var reasons = {};
     this.surveyDataService.getData().forEach((row) => {
       row.changeReason.forEach((reason) => {
         if (reason) {
           if (reasons[reason]) {
-            if (reasons[reason][row.gender]) {
-              reasons[reason][row.gender].value++;
+            if (reasons[reason][row[this.selectedDevice]]) {
+              reasons[reason][row[this.selectedDevice]].value++;
             } else {
-              reasons[reason][row.gender] = {
+              reasons[reason][row[this.selectedDevice]] = {
                 value: 1,
               };
             }
           } else {
             reasons[reason] = {};
-            reasons[reason][row.gender] = {
+            reasons[reason][row[this.selectedDevice]] = {
               value: 1,
             };
           }
@@ -65,9 +67,7 @@ export class AppComponent {
         series: a,
       });
     });
-  }
-
-  onSelectChange(option: Event) {
-    console.log(this.selectedDevice);
+    console.log(reasons);
+    console.log(this.dynamicResults);
   }
 }
