@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class SurveyDataService {
-  public carrerResultArray: CarrerResult[] = [];
-  constructor(private http: HttpClient) {
+  public carrerResultArray: CareerResult[] = [];
+  public getData():Observable<CareerResult>{
+    return 
     this.http
       .get('/assets/survey_data.csv', { responseType: 'text' })
       .subscribe(
@@ -42,18 +43,20 @@ export class SurveyDataService {
               incomeAfterChange: row[25],
               likeToChange: row[26],
               reasonNoChange: row[27]?.split(','),
-            } as CarrerResult);
+            } as CareerResult);
           }
-          console.log(this.carrerResultArray[1]);
         },
         (error) => {
           console.log(error);
         }
       );
   }
+  constructor(private http: HttpClient) {
+    
+  }
 }
 
-export class CarrerResult {
+export class CareerResult {
   id: number;
   gender: string;
   age: string;

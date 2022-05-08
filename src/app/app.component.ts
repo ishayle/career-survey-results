@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { CarrerResult, SurveyDataService } from './survey-data.service';
+import { CareerResult, SurveyDataService } from './survey-data.service';
 
 @Component({
   selector: 'my-app',
@@ -8,8 +8,9 @@ import { CarrerResult, SurveyDataService } from './survey-data.service';
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
-  public carrerResultArray: CarrerResult[] = [];
+  public carrerResultArray: CareerResult[] = [];
   public dynamicResults = [];
+  public dynamicResults2 = [];
   width: number = 700;
   height: number = 300;
   fitContainer: boolean = false;
@@ -29,9 +30,23 @@ export class AppComponent {
   };
   //pie
   showLabels = true;
-  constructor(private surveyDataService: SurveyDataService) {}
+  constructor(private surveyDataService: SurveyDataService) {
+    // this.surveyDataService.getData().subscribe(c=>{
+    //   console.log(c);
+    // });
+    // var reasons = {};
+    // this.carrerResultArray.forEach((row) => {
+    //   row.changeReason.forEach((reason) => {
+    //     if (reasons[reason]) {
+    //       reasons[reason].count++;
+    //     } else {
+    //       reasons[reason] = { name: reason, gender: row.gender, count: 1 };
+    //     }
+    //   });
+    // });
+    // console.log(reasons);
+  }
   public ngOnInit(): void {
-    this.carrerResultArray = this.surveyDataService.carrerResultArray;
     this.dynamicResults = [
       {
         name: 'reason1',
