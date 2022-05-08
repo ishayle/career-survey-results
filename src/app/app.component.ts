@@ -11,9 +11,9 @@ export class AppComponent {
   public carrerResultArray: CareerResult[] = [];
   public dynamicResults = [];
   public dynamicResults2 = [];
-  width: number = 700;
-  height: number = 300;
-  fitContainer: boolean = false;
+  width: number = 1000;
+  height: number = 1000;
+  fitContainer: boolean = true;
   view: [700, 300];
   showXAxis = true;
   showYAxis = true;
@@ -61,7 +61,7 @@ export class AppComponent {
         a.push({ name: f, value: reasons[key][f].value });
       });
       this.dynamicResults.push({
-        name: key,
+        name: key.trim(),
         series: a,
       });
     });
