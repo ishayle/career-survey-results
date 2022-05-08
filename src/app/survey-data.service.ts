@@ -30,7 +30,7 @@ export class SurveyDataService {
               previousExperience: row[13],
               previousRelationShip: row[14],
               previousNumberOfChildren: row[15],
-              changeReason: row[16],
+              changeReason: row[16]?.split(','),
               changeAge: row[17],
               inside: row[18],
               sameField: row[19],
@@ -41,10 +41,10 @@ export class SurveyDataService {
               levelAfterChange: row[24],
               incomeAfterChange: row[25],
               likeToChange: row[26],
-              reasonNoChange: row[27],
+              reasonNoChange: row[27]?.split(','),
             } as CarrerResult);
           }
-          console.log(this.carrerResultArray);
+          console.log(this.carrerResultArray[1]);
         },
         (error) => {
           console.log(error);
@@ -70,7 +70,7 @@ export class CarrerResult {
   previousExperience: string;
   previousRelationShip: string;
   previousNumberOfChildren: string;
-  changeReason: string;
+  changeReason: string[];
   changeAge: string;
   inside: string;
   sameField: string;
@@ -81,5 +81,5 @@ export class CarrerResult {
   levelAfterChange: string;
   incomeAfterChange: string;
   likeToChange: string;
-  reasonNoChange: string;
+  reasonNoChange: string[];
 }
