@@ -1,6 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 import { CareerResult, SurveyDataService } from './survey-data.service';
-
+import RawData = require('./rawData');
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -47,7 +47,7 @@ export class AppComponent {
     // console.log(reasons);
   }
   public ngOnInit(): void {
-    this.dynamicResults = [
+    RawData.this.dynamicResults = [
       {
         name: 'reason1',
         series: [
