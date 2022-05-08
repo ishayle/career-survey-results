@@ -56,10 +56,11 @@ export class AppComponent {
         }
       });
     });
-
+    console.log(reasons);
     Object.keys(reasons).forEach((key) => {
       var a = [];
-      Object.keys(reasons[key]).forEach((f) => {
+      Object.keys(reasons[key])
+      .forEach((f) => {
         a.push({ name: f, value: reasons[key][f].value });
       });
       this.dynamicResults.push({
