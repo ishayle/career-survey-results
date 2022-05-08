@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
 import RawData = require('./rawData');
 
 @Injectable()
@@ -45,7 +43,7 @@ export class SurveyDataService {
     return carrerResultArray;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 }
 
 export class CareerResult {
