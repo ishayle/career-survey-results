@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { SurveyDataService } from './survey-data.service';
+import { CarrerResult, SurveyDataService } from './survey-data.service';
 
 @Component({
   selector: 'my-app',
@@ -8,6 +8,13 @@ import { SurveyDataService } from './survey-data.service';
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
+  public carrerResultArray: CarrerResult[] = [];
 
-  constructor(surveyDataService: SurveyDataService) {}
+  constructor(private surveyDataService: SurveyDataService) {
+    
+  }
+  public ngOnInit(): void {
+    this.carrerResultArray = this.surveyDataService.carrerResultArray;
+  }
+
 }
