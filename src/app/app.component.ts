@@ -9,10 +9,8 @@ import RawData = require('./rawData');
 export class AppComponent {
   public dynamicResults = [];
   public dynamicResults2 = [];
-  width: number = 1000;
-  height: number = 1000;
   fitContainer: boolean = true;
-  view: [700, 300];
+  view: [1000, 1000];
   showXAxis = true;
   showYAxis = true;
   gradient = true;
@@ -36,6 +34,8 @@ export class AppComponent {
 
   onSelectChange(option: Event) {
     var reasons = {};
+    this.dynamicResults = [];
+
     this.surveyDataService.getData().forEach((row) => {
       row.changeReason.forEach((reason) => {
         if (reason) {
