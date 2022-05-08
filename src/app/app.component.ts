@@ -33,7 +33,7 @@ export class AppComponent {
   constructor(private surveyDataService: SurveyDataService) {}
   public ngOnInit(): void {
     var reasons = {};
-    this.carrerResultArray.forEach((row) => {
+    this.surveyDataService.getData().forEach((row) => {
       row.changeReason.forEach((reason) => {
         if (reasons[reason]) {
           reasons[reason].count++;
