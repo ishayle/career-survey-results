@@ -25,6 +25,7 @@ export class AppComponent {
   yAxisLabel = 'Sales';
   timeline = true;
   doughnut = true;
+  selectedDevice: string = 'gender';
   colorScheme = {
     domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB'],
   };
@@ -53,7 +54,6 @@ export class AppComponent {
         }
       });
     });
-    console.log(reasons);
 
     Object.keys(reasons).forEach((key) => {
       var a = [];
@@ -65,73 +65,9 @@ export class AppComponent {
         series: a,
       });
     });
-    console.log(JSON.stringify(this.dynamicResults));
-    // this.dynamicResults = [
-    //   {
-    //     name: 'reason1',
-    //     series: [
-    //       {
-    //         name: 'male',
-    //         value: 2243772,
-    //       },
-    //       {
-    //         name: 'female',
-    //         value: 1227770,
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     name: 'reason2',
-    //     series: [
-    //       {
-    //         name: 'male',
-    //         value: 23772,
-    //       },
-    //       {
-    //         name: 'female',
-    //         value: 1770,
-    //       },
-    //     ],
-    //   },
-    // ];
+  }
 
-    this.dynamicResults = [
-      {
-        name: 'דעיכה בביקוש למקצוע',
-        series: [
-          {
-            name: 'נקבה',
-            value: 3,
-          },
-          {
-            name: 'זכר',
-            value: 5,
-          },
-        ],
-      },
-      {
-        name: 'מימוש פוטנציאל',
-        series: [
-          {
-            name: 'נקבה',
-            value: 47,
-          },
-          {
-            name: 'זכר',
-            value: 16,
-          },
-        ],
-      },
-      {
-        name: 'מניעים כלכליים',
-        series: [
-          {
-            name: 'נקבה',
-            value: 84,
-          },
-        
-        ],
-      },
-    ];
+  onSelectChange(option: Event) {
+    console.log(this.selectedDevice);
   }
 }

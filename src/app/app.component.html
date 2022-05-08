@@ -1,12 +1,11 @@
 <p>תוצאות סקר</p>
-<select>
-  <option>מין</option>
-  <option>גיל</option>
-  <option>מגורים</option>
-  <option>לאום</option>
-  <option>אמונה</option>
-  <option>מצב משפחתי</option>
-  <option>ילדים</option>
+<select [(ngModel)]="selectedDevice" (change)="onSelectChange($event)">
+  <option value="gender">מין</option>
+  <option value="age">גיל</option>
+  <option value="education">מגורים</option>
+  <option value="region">לאום</option>
+  <option value="nationality">אמונה</option>
+  <option value="previousNumberOfChildren">ילדים</option>
 </select>
 <ngx-charts-bar-vertical-normalized
   [view]="view"
