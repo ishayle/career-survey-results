@@ -30,24 +30,20 @@ export class AppComponent {
   };
   //pie
   showLabels = true;
-  constructor(private surveyDataService: SurveyDataService) {
-    // this.surveyDataService.getData().subscribe(c=>{
-    //   console.log(c);
-    // });
-    // var reasons = {};
-    // this.carrerResultArray.forEach((row) => {
-    //   row.changeReason.forEach((reason) => {
-    //     if (reasons[reason]) {
-    //       reasons[reason].count++;
-    //     } else {
-    //       reasons[reason] = { name: reason, gender: row.gender, count: 1 };
-    //     }
-    //   });
-    // });
-    // console.log(reasons);
-  }
+  constructor(private surveyDataService: SurveyDataService) {}
   public ngOnInit(): void {
-    RawData.this.dynamicResults = [
+    var reasons = {};
+    this.carrerResultArray.forEach((row) => {
+      row.changeReason.forEach((reason) => {
+        if (reasons[reason]) {
+          reasons[reason].count++;
+        } else {
+          reasons[reason] = { name: reason, gender: row.gender, count: 1 };
+        }
+      });
+    });
+    console.log(reasons);
+    this.dynamicResults = [
       {
         name: 'reason1',
         series: [
