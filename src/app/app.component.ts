@@ -35,41 +35,64 @@ export class AppComponent {
     var reasons = {};
     this.surveyDataService.getData().forEach((row) => {
       row.changeReason.forEach((reason) => {
-        if (reasons[reason]) {
-          reasons[reason].count++;
-        } else {
-          reasons[reason] = { name: reason, gender: row.gender, count: 1 };
+        if (reason) {
+          if (reasons[reason]) {
+            if (reasons[reason][row.gender]) {
+              reasons[reason][row.gender].value++;
+            } else {
+              reasons[reason][row.gender] = {
+                value: 1,
+              };
+            }
+          } else {
+            reasons[reason] = {};
+            reasons[reason][row.gender] = {
+              value: 1,
+            };
+          }
         }
       });
     });
     console.log(reasons);
-    this.dynamicResults = [
-      {
-        name: 'reason1',
-        series: [
-          {
-            name: 'male',
-            value: 2243772,
-          },
-          {
-            name: 'female',
-            value: 1227770,
-          },
-        ],
-      },
-      {
-        name: 'reason2',
-        series: [
-          {
-            name: 'male',
-            value: 23772,
-          },
-          {
-            name: 'female',
-            value: 1770,
-          },
-        ],
-      },
-    ];
+
+    Object.keys(reasons).forEach((key) => {
+      var a = [];
+      Object.keys(reasons[key]).forEach((f) => {
+        a.push({ name: f, value: reasons[key][f].value });
+      });
+      this.dynamicResults.push({
+        name: key,
+        series: a,
+      });
+    });
+    console.log(this.dynamicResults);
+    // this.dynamicResults = [
+    //   {
+    //     name: 'reason1',
+    //     series: [
+    //       {
+    //         name: 'male',
+    //         value: 2243772,
+    //       },
+    //       {
+    //         name: 'female',
+    //         value: 1227770,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     name: 'reason2',
+    //     series: [
+    //       {
+    //         name: 'male',
+    //         value: 23772,
+    //       },
+    //       {
+    //         name: 'female',
+    //         value: 1770,
+    //       },
+    //     ],
+    //   },
+    // ];
   }
 }
