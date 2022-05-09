@@ -30,9 +30,10 @@ export class AppComponent {
   constructor(private surveyDataService: SurveyDataService) {}
   public ngOnInit(): void {
     this.selectedDevice = 'age';
+    this.onSelectChange();
   }
 
-  onSelectChange(option: Event) {
+  onSelectChange() {
     var reasons = {};
     this.dynamicResults = [];
 
